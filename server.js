@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 var cors = require('cors');
 
 // Configuration
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/groceries");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/groceries", { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
@@ -77,7 +77,7 @@ app.put('/api/groceries/:id', function (req, res) {
         quantity: req.body.quantity
     };
     console.log("Updating item - ", req.params.id);
-    Grocery.update({_id: req.params.id}, grocery, function (err, raw) {
+    Grocery.updateOne({_id: req.params.id}, grocery, function (err, raw) {
         if (err) {
             res.send(err);
         }
