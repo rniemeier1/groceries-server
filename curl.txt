@@ -1,10 +1,7 @@
 
 
 # Create item
-curl --header "Content-Type: application/json" \
---request POST \
-  --data '{"name":"Bread","quantity":"2"}' \
-  http://localhost:8080/api/groceries
+curl --header "Content-Type: application/json" --request POST --data '{\"name\":\"Bread\",\"quantity\":\"2\"}' http://localhost:8080/api/groceries
 
 # Update item
 curl --header "Content-Type: application/json" \
